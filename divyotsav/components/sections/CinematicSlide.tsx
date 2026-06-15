@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,58 +23,59 @@ export default function CinematicSlide({
   priority = false,
   altText,
 }: CinematicSlideProps) {
-  const sectionRef = useRef<HTMLElement>(null);
+  // Ken Burns: image starts zoomed-in and settles to natural scale when the
+  // section enters the viewport. Uses whileInView (IntersectionObserver) so
+  // it fires ONCE on entry — no continuous scroll listeners, no jank.
+  const imageVariants = {
+    hidden: { scale: 1.08, opacity: 0.85 },
+    visible: {
+      scale: 1.0,
+      opacity: 1,
+      transition: {
+        duration: 1.6,
+        ease: [0.22, 1, 0.36, 1] as const, // expo-out — cinematic deceleration
+      },
+    },
+  };
 
-  // Track scroll progress of this section relative to the viewport.
-  // "start end" → slide bottom touches viewport bottom (entering from below)
-  // "end start" → slide top leaves viewport top (exiting upward)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  // Parallax scale: image starts slightly zoomed in as the slide enters
-  // from below and settles to normal scale when fully in view.
-  // Gives the same cinematic push-in feel as sabyasachi.com.
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1.0, 1.05]);
-
-  // Very subtle vertical shift on the image (parallax depth)
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-4%", "4%"]);
-
-  // Staggered text reveal variants
+  // Staggered text reveal
   const containerVariants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.18,
-        delayChildren: 0.1,
+        staggerChildren: 0.16,
+        delayChildren: 0.2,
       },
     },
   };
 
   const fadeUpVariants = {
-    hidden: { opacity: 0, y: 32 },
+    hidden: { opacity: 0, y: 28 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1.1,
-        ease: [0.22, 1, 0.36, 1] as const, // expo-out for an editorial deceleration
+        duration: 1.0,
+        ease: [0.22, 1, 0.36, 1] as const,
       },
     },
   };
 
   return (
     <section
-      ref={sectionRef}
       className="snap-section relative w-full flex items-center justify-center bg-obsidian overflow-hidden select-none"
       style={{ height: "100dvh" }}
     >
-      {/* Parallax background image — scale + translateY driven by scroll position */}
+      {/* Ken Burns background image — GPU-composited via will-change: transform.
+          Scale animates on IntersectionObserver entry, NOT on every scroll frame. */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <motion.div
           className="absolute inset-0 w-full h-full"
-          style={{ scale: imageScale, y: imageY }}
+          variants={imageVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "0px" }}
+          style={{ willChange: "transform, opacity" }}
         >
           <Image
             src={imageSrc}
@@ -92,7 +92,7 @@ export default function CinematicSlide({
       {/* Dark overlay for text legibility */}
       <div className="absolute inset-0 bg-obsidian/35 z-10" />
 
-      {/* Slide content — bottom-anchored, staggered fade-up on enter */}
+      {/* Slide content — bottom-anchored, staggered fade-up on section enter */}
       <div className="absolute bottom-20 md:bottom-28 left-0 w-full z-20 flex flex-col items-center justify-center text-center px-6 safe-b">
         <motion.div
           variants={containerVariants}

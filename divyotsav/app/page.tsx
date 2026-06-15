@@ -27,10 +27,8 @@ export default async function Home() {
         altText="15 Years of Divyotsav Indian Luxury Event Management"
       />
 
-      {/* Quote 1 */}
+      {/* Quote 1 — no divider between quote and next slide */}
       <QuoteSpacer quote={"\u201cFor culture to be relevant, it needs to be dynamic.\u201d"} />
-
-      <SlideDivider />
 
       {/* Slide 2: Weddings */}
       <CinematicSlide
@@ -102,14 +100,12 @@ export default async function Home() {
         altText="Traditional Mandap Floral Design and Structure"
       />
 
-      {/* Quote 2 */}
+      {/* Quote 2 — no divider between quote and next slide */}
       <QuoteSpacer
         quote={
           "\u201cCrowded narrow lanes with balconies jutting out of beautiful old mansions and homes, jostling for space in North Calcutta. So rich in its nonchalance, between the clamour of grandeur and decay. It\u2019s almost spiritual, the neglect of luxury and the casual existence of glamour. It makes Calcutta unforgettable.\u201d"
         }
       />
-
-      <SlideDivider />
 
       {/* Slide 8: Bridal Couture */}
       <CinematicSlide
