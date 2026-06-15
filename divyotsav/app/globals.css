@@ -12,13 +12,12 @@
   --cream-dark: #EAE3D8;
 }
 
-/* Scroll-snap container — html is the native scroll root on all browsers.
-   mandatory: browser snaps to a snap point after every scroll gesture.
-   The cream SlideDividers are visible during the gesture (breathing room),
-   then the next CinematicSlide (scroll-snap-align: start) takes over fully. */
+/* Scroll-snap container — proximity snaps when the user is within ~50% of
+   a snap point; does NOT lock every scroll gesture like mandatory does.
+   This lets fast upward flicks skip multiple slides freely while still
+   ensuring each slide settles into a perfectly full-screen position. */
 html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
 }
 
 body {
@@ -66,13 +65,11 @@ p {
   height: 100dvh; /* dynamic viewport height — excludes mobile browser chrome */
 }
 
-/* scroll-snap child — each CinematicSlide uses this to snap to viewport top.
-   scroll-snap-align: start means the top of the slide aligns to the top of the
-   snap container (html). Combined with height: 100dvh, the slide fills exactly
-   one viewport when snapped. */
+/* scroll-snap child — each CinematicSlide snaps its top edge to the
+   viewport top when the user slows near it. No scroll-snap-stop so fast
+   momentum flicks can freely skip multiple slides up or down. */
 .snap-section {
   scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 /* Safe area bottom padding for iPhone notch / home bar */
