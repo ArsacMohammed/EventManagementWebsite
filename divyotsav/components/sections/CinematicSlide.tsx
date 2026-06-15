@@ -46,7 +46,7 @@ export default function CinematicSlide({
 
   return (
     <section
-      className="relative w-full flex items-center justify-center bg-obsidian overflow-hidden select-none"
+      className="snap-section relative w-full flex items-center justify-center bg-obsidian overflow-hidden select-none"
       style={{ height: "100dvh" }}
     >
       {/* Background Media - Standard next/image with absolute fill */}

@@ -12,6 +12,15 @@
   --cream-dark: #EAE3D8;
 }
 
+/* Scroll-snap container — html is the native scroll root on all browsers.
+   mandatory: browser snaps to a snap point after every scroll gesture.
+   The cream SlideDividers are visible during the gesture (breathing room),
+   then the next CinematicSlide (scroll-snap-align: start) takes over fully. */
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--cream);
   color: var(--obsidian);
@@ -55,6 +64,15 @@ p {
 .full-screen-section {
   height: 100vh; /* fallback for browsers without dvh support */
   height: 100dvh; /* dynamic viewport height — excludes mobile browser chrome */
+}
+
+/* scroll-snap child — each CinematicSlide uses this to snap to viewport top.
+   scroll-snap-align: start means the top of the slide aligns to the top of the
+   snap container (html). Combined with height: 100dvh, the slide fills exactly
+   one viewport when snapped. */
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* Safe area bottom padding for iPhone notch / home bar */
