@@ -12,12 +12,9 @@
   --cream-dark: #EAE3D8;
 }
 
-/* Scroll-snap container — proximity snaps when the user is within ~50% of
-   a snap point; does NOT lock every scroll gesture like mandatory does.
-   This lets fast upward flicks skip multiple slides freely while still
-   ensuring each slide settles into a perfectly full-screen position. */
 html {
-  scroll-snap-type: y proximity;
+  /* Scroll snapping removed to prevent scroll lockups during continuous scrolling.
+     Reverted to high-performance native scrolling to match sabyasachi.com. */
 }
 
 body {
@@ -65,11 +62,8 @@ p {
   height: 100dvh; /* dynamic viewport height — excludes mobile browser chrome */
 }
 
-/* scroll-snap child — each CinematicSlide snaps its top edge to the
-   viewport top when the user slows near it. No scroll-snap-stop so fast
-   momentum flicks can freely skip multiple slides up or down. */
+/* snap-section class scroll snap behavior removed to match sabyasachi.com free scroll */
 .snap-section {
-  scroll-snap-align: start;
 }
 
 /* Safe area bottom padding for iPhone notch / home bar */
