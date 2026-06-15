@@ -1,0 +1,40 @@
+name: Deploy Divyotsav
+
+on:
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [sanity-webhook]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "./divyotsav/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./divyotsav
+
+      - name: Build
+        run: npm run build
+        working-directory: ./divyotsav
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: production
+          SANITY_API_TOKEN: ${{ secrets.SANITY_API_TOKEN }}
+
+      - name: Deploy to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          channelId: live
+          projectId: divyotsav-web
+          entryPoint: ./divyotsav

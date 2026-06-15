@@ -1,0 +1,39 @@
+#!/bin/bash
+# post-commit Git Hook
+#
+# To install:
+# 1. Copy this file to .git/hooks/post-commit
+# 2. Make it executable: chmod +x .git/hooks/post-commit
+#
+
+# Navigate to Git project root
+cd "$(git rev-parse --show-toplevel)" || exit 0
+
+# Check if Python 3 is available
+if command -v python3 >/dev/null 2>&1; then
+  PYTHON_CMD="python3"
+elif command -v python >/dev/null 2>&1; then
+  PYTHON_CMD="python"
+else
+  # No Python available, skip gracefully
+  exit 0
+fi
+
+# Ensure CODEMAP.json and update.py exist
+if [ ! -f "CODEMAP.json" ] || [ ! -f "update.py" ]; then
+  exit 0
+fi
+
+# Run the update script
+$PYTHON_CMD update.py --check >/dev/null 2>&1 || exit 0
+$PYTHON_CMD update.py >/dev/null 2>&1
+
+# Check if there are changes in ai_context/ or CODEMAP.json
+if git diff --quiet HEAD -- ai_context CODEMAP.json; then
+  # No changes, exit silently
+  exit 0
+fi
+
+# Add and amend the commit with no verification loops
+git add ai_context/ CODEMAP.json
+git commit --amend --no-edit --no-verify >/dev/null 2>&1

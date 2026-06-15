@@ -1,0 +1,305 @@
+{
+  "meta": {
+    "project_name": "Divyotsav",
+    "version": "1.0.0",
+    "active_sprint": 3,
+    "completed_sprints": [
+      1,
+      2
+    ],
+    "total_entities": 28,
+    "last_updated": "2026-06-15T13:42:29.655641Z",
+    "last_updated_by": "update.py script"
+  },
+  "modules": {
+    "M1_layout": {
+      "name": "Core layout and components",
+      "slug": "layout",
+      "sprint": 1,
+      "status": "IN_PROGRESS",
+      "files": {
+        "divyotsav/app/layout.tsx": "Root layout template",
+        "divyotsav/components/layout/Header.tsx": "Sticky header layout",
+        "divyotsav/components/layout/Footer.tsx": "General footer layout"
+      }
+    },
+    "M2_home": {
+      "name": "Homepage implementation",
+      "slug": "home",
+      "sprint": 1,
+      "status": "DONE",
+      "files": {
+        "divyotsav/app/page.tsx": "Homepage router page",
+        "divyotsav/components/sections/HeroSection.tsx": "Homepage Hero component",
+        "divyotsav/components/sections/AboutSection.tsx": "Homepage About section component",
+        "divyotsav/components/sections/ServicesBento.tsx": "Homepage Bento Services component",
+        "divyotsav/components/sections/StatsSection.tsx": "Homepage Stats Section strip",
+        "divyotsav/components/sections/GalleryScroller.tsx": "Homepage Portfolio Gallery scroll component",
+        "divyotsav/components/sections/Testimonials.tsx": "Homepage Testimonials grid component",
+        "divyotsav/components/sections/CinematicSlide.tsx": "Cinematic visual slide component",
+        "divyotsav/components/sections/QuoteSpacer.tsx": "Italicized quote panel component"
+      }
+    },
+    "M3_services": {
+      "name": "Services catalog and dynamic pages",
+      "slug": "services",
+      "sprint": 2,
+      "status": "DONE",
+      "files": {
+        "divyotsav/app/services/page.tsx": "Services catalog page",
+        "divyotsav/app/services/[slug]/page.tsx": "Dynamic service detail page",
+        "divyotsav/lib/servicesData.ts": "Shared services static data structure",
+        "divyotsav/components/sections/ServicesCatalog.tsx": "Interactive filtering and timeline render component for services catalog"
+      }
+    },
+    "M4_contact": {
+      "name": "Contact page and WhatsApp Integration",
+      "slug": "contact",
+      "sprint": 2,
+      "status": "DONE",
+      "files": {
+        "divyotsav/app/contact/page.tsx": "Contact page containing the Web3Forms enquiry form",
+        "divyotsav/components/ui/WhatsAppFloat.tsx": "Fixed floating WhatsApp button component"
+      }
+    },
+    "M5_sanity": {
+      "name": "Sanity CMS integration and Studio schemas",
+      "slug": "sanity",
+      "sprint": 3,
+      "status": "DONE",
+      "files": {
+        "divyotsav/sanity.config.ts": "Sanity Studio configuration file",
+        "divyotsav/lib/sanity/client.ts": "Sanity client connection helper",
+        "divyotsav/lib/sanity/queries.ts": "GROQ queries for content fetching",
+        "divyotsav/lib/sanity/image.ts": "Sanity image URL builder helper",
+        "divyotsav/sanity/schemas/index.ts": "CMS schema aggregation index",
+        "divyotsav/sanity/schemas/siteSettings.ts": "CMS site settings schema",
+        "divyotsav/sanity/schemas/service.ts": "CMS service schema",
+        "divyotsav/sanity/schemas/testimonial.ts": "CMS testimonial schema",
+        "divyotsav/sanity/schemas/galleryItem.ts": "CMS gallery item schema"
+      }
+    },
+    "M6_infra": {
+      "name": "Deployment, SEO, and optimization",
+      "slug": "infra",
+      "sprint": 3,
+      "status": "DONE",
+      "files": {
+        "divyotsav/next-sitemap.config.js": "next-sitemap configuration file",
+        "divyotsav/firebase.json": "Firebase Hosting configuration file",
+        ".github/workflows/deploy.yml": "GitHub Actions deploy workflow"
+      }
+    }
+  },
+  "entities": {
+    "DIV-FE-LYT-001": {
+      "name": "Header",
+      "file_path": "divyotsav/components/layout/Header.tsx",
+      "layer": "FE",
+      "module": "M1_layout",
+      "description": "Sticky navigation header with dynamic transparency on scroll and mobile full-screen overlay menu."
+    },
+    "DIV-FE-LYT-002": {
+      "name": "Footer",
+      "file_path": "divyotsav/components/layout/Footer.tsx",
+      "layer": "FE",
+      "module": "M1_layout",
+      "description": "Premium 4-column footer containing brand identity, quick links, custom service list with Sanskrit labels, NAP, and scroll-to-top button."
+    },
+    "DIV-FE-HOM-001": {
+      "name": "HeroSection",
+      "file_path": "divyotsav/components/sections/HeroSection.tsx",
+      "layer": "FE",
+      "module": "M2_home",
+      "description": "Premium full-screen landing hero displaying Sanskrit labeling, fade-up title and copy, call-to-actions, vertical scroll line, and floating stats indicators."
+    },
+    "DIV-FE-HOM-002": {
+      "name": "AboutSection",
+      "file_path": "divyotsav/components/sections/AboutSection.tsx",
+      "layer": "FE",
+      "module": "M2_home",
+      "description": "Two-column narrative block displaying the brand story and EST. 2011 badge next to a vertical editorial image featuring a custom gold frame border accent."
+    },
+    "DIV-FE-HOM-003": {
+      "name": "ServicesBento",
+      "file_path": "divyotsav/components/sections/ServicesBento.tsx",
+      "layer": "FE",
+      "module": "M2_home",
+      "description": "Bento grid of service offerings featuring hover-revealed gold borders, Sanskrit labeling, and an auto-scrolling marquee footer."
+    },
+    "DIV-FE-HOM-004": {
+      "name": "StatsSection",
+      "file_path": "divyotsav/components/sections/StatsSection.tsx",
+      "layer": "FE",
+      "module": "M2_home",
+      "description": "Horizontal summary strip featuring 4 statistics separated by vertical thin lines and scroll animation."
+    },
+    "DIV-FE-HOM-005": {
+      "name": "GalleryScroller",
+      "file_path": "divyotsav/components/sections/GalleryScroller.tsx",
+      "layer": "FE",
+      "module": "M2_home",
+      "description": "Auto-scrolling, hover-pausing scroller displaying 7 tall portrait gallery images with slide-up descriptions on hover."
+    },
+    "DIV-FE-HOM-006": {
+      "name": "Testimonials",
+      "file_path": "divyotsav/components/sections/Testimonials.tsx",
+      "layer": "FE",
+      "module": "M2_home",
+      "description": "2x2 feedback grid container presenting quote blockquotes and names of previous wedding, corporate, and private event hosts."
+    },
+    "DIV-FE-HOM-007": {
+      "name": "CinematicSlide",
+      "file_path": "divyotsav/components/sections/CinematicSlide.tsx",
+      "layer": "FE",
+      "module": "M2_home",
+      "description": "Fullscreen visual slide component presenting premium 4k images, headings, and customizable CTAs."
+    },
+    "DIV-FE-HOM-008": {
+      "name": "QuoteSpacer",
+      "file_path": "divyotsav/components/sections/QuoteSpacer.tsx",
+      "layer": "FE",
+      "module": "M2_home",
+      "description": "Cream text spacer panel presenting large italicized cultural and design quotes."
+    },
+    "DIV-FE-SRV-001": {
+      "name": "ServicesPage",
+      "file_path": "divyotsav/app/services/page.tsx",
+      "layer": "FE",
+      "module": "M3_services",
+      "description": "Responsive service catalog view featuring dynamic category filtering, pricing summaries, and an alternating deep roots cultural significance timeline."
+    },
+    "DIV-FE-SRV-002": {
+      "name": "ServiceDetailPage",
+      "file_path": "divyotsav/app/services/[slug]/page.tsx",
+      "layer": "FE",
+      "module": "M3_services",
+      "description": "Dynamic service details page displaying Sanskrit subtitles, pricing, checklist grids, banner headers, design philosophies, and custom project galleries."
+    },
+    "DIV-UTL-SRV-001": {
+      "name": "servicesData",
+      "file_path": "divyotsav/lib/servicesData.ts",
+      "layer": "UTL",
+      "module": "M3_services",
+      "description": "Bespoke database-like static representation of the 4 principal offerings containing pricing metrics, features checklists, and timeline information."
+    },
+    "DIV-FE-CON-001": {
+      "name": "ContactPage",
+      "file_path": "divyotsav/app/contact/page.tsx",
+      "layer": "FE",
+      "module": "M4_contact",
+      "description": "Bespoke contact landing page featuring interactive dropdowns, Web3Forms API submission logic, validation handling, honeypot defenses, address cards, and maps."
+    },
+    "DIV-FE-CON-002": {
+      "name": "WhatsAppFloat",
+      "file_path": "divyotsav/components/ui/WhatsAppFloat.tsx",
+      "layer": "FE",
+      "module": "M4_contact",
+      "description": "Floating action component anchored bottom-right, displaying the WhatsApp SVG indicator and executing client wa.me redirection."
+    },
+    "DIV-FE-SRV-003": {
+      "name": "ServicesCatalog",
+      "file_path": "divyotsav/components/sections/ServicesCatalog.tsx",
+      "layer": "FE",
+      "module": "M3_services",
+      "description": "Interactive services filtering catalog component mapping dynamic CMS offerings with custom timeline layout and details explorer."
+    },
+    "DIV-CFG-SAN-001": {
+      "name": "SanityConfig",
+      "file_path": "divyotsav/sanity.config.ts",
+      "layer": "CFG",
+      "module": "M5_sanity",
+      "description": "Embedded Sanity Studio dashboard configuration routing base studio path and binding custom structural plugin schemas."
+    },
+    "DIV-UTL-SAN-001": {
+      "name": "SanityClient",
+      "file_path": "divyotsav/lib/sanity/client.ts",
+      "layer": "UTL",
+      "module": "M5_sanity",
+      "description": "Dynamic Sanity API client setup with query fetching, caching, error logging, and static data fallback structures."
+    },
+    "DIV-UTL-SAN-002": {
+      "name": "SanityQueries",
+      "file_path": "divyotsav/lib/sanity/queries.ts",
+      "layer": "UTL",
+      "module": "M5_sanity",
+      "description": "GROQ queries for siteSettings metadata, services listings, testimonials arrays, and portfolio gallery listings."
+    },
+    "DIV-UTL-SAN-003": {
+      "name": "SanityImageBuilder",
+      "file_path": "divyotsav/lib/sanity/image.ts",
+      "layer": "UTL",
+      "module": "M5_sanity",
+      "description": "Sanity CDN utility returning fully qualified image URLs from CMS asset references."
+    },
+    "DIV-SCH-SAN-001": {
+      "name": "SchemaIndex",
+      "file_path": "divyotsav/sanity/schemas/index.ts",
+      "layer": "SCH",
+      "module": "M5_sanity",
+      "description": "CMS schemas collection index registering siteSettings, service, testimonial, and galleryItem schemas."
+    },
+    "DIV-SCH-SAN-002": {
+      "name": "SiteSettingsSchema",
+      "file_path": "divyotsav/sanity/schemas/siteSettings.ts",
+      "layer": "SCH",
+      "module": "M5_sanity",
+      "description": "Sanity document schema for general configuration, tagline, meta titles/descriptions, and contact information."
+    },
+    "DIV-SCH-SAN-003": {
+      "name": "ServiceSchema",
+      "file_path": "divyotsav/sanity/schemas/service.ts",
+      "layer": "SCH",
+      "module": "M5_sanity",
+      "description": "Sanity service model defining Sanskrit labels, categories, descriptions, checklists, pricing, banners, and timeline narratives."
+    },
+    "DIV-SCH-SAN-004": {
+      "name": "TestimonialSchema",
+      "file_path": "divyotsav/sanity/schemas/testimonial.ts",
+      "layer": "SCH",
+      "module": "M5_sanity",
+      "description": "Sanity testimonial record containing host client names, event types, rating thresholds, and quote statements."
+    },
+    "DIV-SCH-SAN-005": {
+      "name": "GalleryItemSchema",
+      "file_path": "divyotsav/sanity/schemas/galleryItem.ts",
+      "layer": "SCH",
+      "module": "M5_sanity",
+      "description": "Sanity portfolio image reference model declaring gallery titles, categorizations, and grid sort orders."
+    },
+    "DIV-CFG-INF-001": {
+      "name": "SitemapConfig",
+      "file_path": "divyotsav/next-sitemap.config.js",
+      "layer": "CFG",
+      "module": "M6_infra",
+      "description": "next-sitemap configuration file setting canonical url, robots indexing rules, and priority levels for auto-generated sitemaps."
+    },
+    "DIV-CFG-INF-002": {
+      "name": "FirebaseConfig",
+      "file_path": "divyotsav/firebase.json",
+      "layer": "CFG",
+      "module": "M6_infra",
+      "description": "Firebase Hosting deployment config mapping static exports and clean route redirects."
+    },
+    "DIV-INF-INF-001": {
+      "name": "DeployWorkflow",
+      "file_path": ".github/workflows/deploy.yml",
+      "layer": "INF",
+      "module": "M6_infra",
+      "description": "GitHub Actions workflow running production Next.js compilation, sitemap generation, and automated Firebase Hosting publication."
+    }
+  },
+  "dependency_rules": {
+    "no_hardcoded_colors": "All colors must reference CSS variables defined in DESIGN.md, no hardcoded hex values are allowed.",
+    "no_border_radius": "Zero border-radius is enforced everywhere on cards, buttons, and images (always sharp corners).",
+    "no_box_shadows": "Box shadows are forbidden on all cards, buttons, and other UI elements.",
+    "no_unused_fonts": "Only Cormorant Garamond, Jost, and Noto Serif Devanagari fonts are allowed.",
+    "sanskrit_labels": "Sanskrit labels in Noto Serif Devanagari must precede or sit above all service titles.",
+    "animation_properties": "Animations must use only opacity and transform properties to ensure smooth performance.",
+    "reduced_motion": "All animations must respect users' prefers-reduced-motion media query settings.",
+    "no_desktop_video_mobile": "On mobile devices, hero background videos must be replaced with static poster fallback images.",
+    "sanity_client_only": "All data fetching for dynamic content must go through the Sanity client and utilize static generation.",
+    "secure_form": "Contact forms must use Web3Forms with honeypot spam protection.",
+    "seo_optimizations": "All pages must export appropriate metadata and include schema.org EventPlanner structured data."
+  }
+}

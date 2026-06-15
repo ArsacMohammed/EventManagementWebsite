@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #F4EFE6;
+  --obsidian: #1C1814;
+  --gold: #B8965A;
+  --burgundy: #8B2635;
+  --warm-gray: #6B5D52;
+  --border: #D9D0C5;
+  --cream-dark: #EAE3D8;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--obsidian);
+  font-family: var(--font-jost), sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cormorant), serif;
+  line-height: 1.15;
+}
+
+p {
+  line-height: 1.75;
+}
+
+/* Hide scrollbars for custom scrollers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Standard animation utility helpers using opacity and transform ONLY */
+.fade-up-init {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.fade-up-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 800ms cubic-bezier(0.25, 0.1, 0.25, 1), transform 800ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Full-screen section: exact viewport fit across all devices.
+   100dvh accounts for the dynamic browser chrome on iOS/Android.
+   Falls back to 100vh for older browsers. */
+.full-screen-section {
+  height: 100vh; /* fallback for browsers without dvh support */
+  height: 100dvh; /* dynamic viewport height — excludes mobile browser chrome */
+}
+
+/* Safe area bottom padding for iPhone notch / home bar */
+.safe-b {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}

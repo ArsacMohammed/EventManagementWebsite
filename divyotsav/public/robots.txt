@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://divyotsav.com
+
+# Sitemaps
+Sitemap: https://divyotsav.com/sitemap.xml
