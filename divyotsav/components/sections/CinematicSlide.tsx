@@ -74,7 +74,7 @@ export default function CinematicSlide({
           variants={imageVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, margin: "0px" }}
+          viewport={{ once: true, margin: "0px" }}
           style={{ willChange: "transform, opacity" }}
         >
           <Image
@@ -98,7 +98,7 @@ export default function CinematicSlide({
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, margin: "-80px" }}
+          viewport={{ once: true, margin: "-80px" }}
           className="max-w-4xl flex flex-col items-center"
         >
           {/* Sanskrit subtitle / tagline */}
