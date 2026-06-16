@@ -12,6 +12,7 @@ const siteSettings = {
     { name: "phone", title: "Phone", type: "string" },
     { name: "address", title: "Address", type: "text" },
     { name: "consultationHours", title: "Consultation Hours", type: "string" },
+    { name: "googleMapsUrl", title: "Google Maps Embed URL", type: "text", description: "The source URL inside the Google Maps iframe code (starts with https://www.google.com/maps/embed...)" },
     { name: "metaTitle", title: "Meta Title", type: "string" },
     { name: "metaDescription", title: "Meta Description", type: "text" },
   ],

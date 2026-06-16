@@ -7,8 +7,8 @@
       1,
       2
     ],
-    "total_entities": 28,
-    "last_updated": "2026-06-15T15:28:34.560004Z",
+    "total_entities": 30,
+    "last_updated": "2026-06-16T06:58:25.150639Z",
     "last_updated_by": "update.py script"
   },
   "modules": {
@@ -59,7 +59,8 @@
       "status": "DONE",
       "files": {
         "divyotsav/app/contact/page.tsx": "Contact page containing the Web3Forms enquiry form",
-        "divyotsav/components/ui/WhatsAppFloat.tsx": "Fixed floating WhatsApp button component"
+        "divyotsav/components/ui/WhatsAppFloat.tsx": "Fixed floating WhatsApp button component",
+        "divyotsav/app/contact/ContactClient.tsx": "Client-side contact form container component"
       }
     },
     "M5_sanity": {
@@ -76,7 +77,8 @@
         "divyotsav/sanity/schemas/siteSettings.ts": "CMS site settings schema",
         "divyotsav/sanity/schemas/service.ts": "CMS service schema",
         "divyotsav/sanity/schemas/testimonial.ts": "CMS testimonial schema",
-        "divyotsav/sanity/schemas/galleryItem.ts": "CMS gallery item schema"
+        "divyotsav/sanity/schemas/galleryItem.ts": "CMS gallery item schema",
+        "divyotsav/sanity/schemas/homepage.ts": "CMS homepage schema defining slides and quotes"
       }
     },
     "M6_infra": {
@@ -197,6 +199,13 @@
       "module": "M4_contact",
       "description": "Floating action component anchored bottom-right, displaying the WhatsApp SVG indicator and executing client wa.me redirection."
     },
+    "DIV-FE-CON-003": {
+      "name": "ContactClient",
+      "file_path": "divyotsav/app/contact/ContactClient.tsx",
+      "layer": "FE",
+      "module": "M4_contact",
+      "description": "Interactive contact page client container handling form state, validations, honeypot filters, and rendering dynamic contact cards and map."
+    },
     "DIV-FE-SRV-003": {
       "name": "ServicesCatalog",
       "file_path": "divyotsav/components/sections/ServicesCatalog.tsx",
@@ -266,6 +275,13 @@
       "layer": "SCH",
       "module": "M5_sanity",
       "description": "Sanity portfolio image reference model declaring gallery titles, categorizations, and grid sort orders."
+    },
+    "DIV-SCH-SAN-006": {
+      "name": "HomepageSchema",
+      "file_path": "divyotsav/sanity/schemas/homepage.ts",
+      "layer": "SCH",
+      "module": "M5_sanity",
+      "description": "Sanity document schema for managing the homepage layout sequences of slides and quotes."
     },
     "DIV-CFG-INF-001": {
       "name": "SitemapConfig",

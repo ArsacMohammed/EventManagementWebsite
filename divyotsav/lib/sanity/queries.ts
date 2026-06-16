@@ -57,6 +57,24 @@ export const siteSettingsQuery = `*[_type == "siteSettings"][0] {
   phone,
   address,
   consultationHours,
+  googleMapsUrl,
   metaTitle,
   metaDescription
+}`;
+
+export const homepageQuery = `*[_type == "homepage"][0] {
+  sections[] {
+    _type,
+    _type == "cinematicSlide" => {
+      heading,
+      subtitle,
+      "image": image.asset->url,
+      buttonText,
+      buttonLink,
+      altText
+    },
+    _type == "quoteSpacer" => {
+      quote
+    }
+  }
 }`;

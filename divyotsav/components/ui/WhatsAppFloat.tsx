@@ -1,9 +1,13 @@
 "use client";
 
-export default function WhatsAppFloat() {
-  const whatsappNumber = "919876543210"; // TODO_CLIENT: Replace with client business number
+interface WhatsAppFloatProps {
+  whatsappNumber?: string;
+}
+
+export default function WhatsAppFloat({ whatsappNumber = "919876543210" }: WhatsAppFloatProps) {
+  const cleanNumber = whatsappNumber.replace(/\+/g, "").replace(/\s+/g, "");
   const message = encodeURIComponent("Hello Divyotsav, I would like to inquire about planning an event.");
-  const waUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+  const waUrl = `https://wa.me/${cleanNumber}?text=${message}`;
 
   return (
     <a

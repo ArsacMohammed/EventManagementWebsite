@@ -38,4 +38,26 @@ export interface CMSSiteSettings {
   phone?: string;
   address?: string;
   consultationHours?: string;
+  googleMapsUrl?: string;
+}
+
+export interface CMSHomepageSlide {
+  _type: "cinematicSlide";
+  heading: string;
+  subtitle?: string;
+  image?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  altText?: string;
+}
+
+export interface CMSHomepageQuote {
+  _type: "quoteSpacer";
+  quote: string;
+}
+
+export type CMSHomepageSection = CMSHomepageSlide | CMSHomepageQuote;
+
+export interface CMSHomepage {
+  sections?: CMSHomepageSection[];
 }

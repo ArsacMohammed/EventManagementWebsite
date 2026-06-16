@@ -19,6 +19,7 @@ Slug: `MODULE_sanity.md` | Sprint: 3 | Status: DONE
 - **DIV-SCH-SAN-003** (`ServiceSchema`): Sanity service model defining Sanskrit labels, categories, descriptions, checklists, pricing, banners, and timeline narratives. in `divyotsav/sanity/schemas/service.ts`
 - **DIV-SCH-SAN-004** (`TestimonialSchema`): Sanity testimonial record containing host client names, event types, rating thresholds, and quote statements. in `divyotsav/sanity/schemas/testimonial.ts`
 - **DIV-SCH-SAN-005** (`GalleryItemSchema`): Sanity portfolio image reference model declaring gallery titles, categorizations, and grid sort orders. in `divyotsav/sanity/schemas/galleryItem.ts`
+- **DIV-SCH-SAN-006** (`HomepageSchema`): Sanity document schema for managing the homepage layout sequences of slides and quotes. in `divyotsav/sanity/schemas/homepage.ts`
 
 ## Background Workers
 *No entities registered for this layer.*

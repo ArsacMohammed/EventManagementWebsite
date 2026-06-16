@@ -4,6 +4,9 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import { sanityFetch } from "@/lib/sanity/client";
+import { siteSettingsQuery } from "@/lib/sanity/queries";
+import { CMSSiteSettings } from "@/lib/sanity/types";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -55,27 +58,32 @@ export const viewport = {
   viewportFit: "cover", // enables env(safe-area-inset-*) on iOS notch devices
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteSettings = await sanityFetch<CMSSiteSettings | null>({
+    query: siteSettingsQuery,
+    fallback: null,
+  });
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "EventPlanner",
     "name": "Divyotsav",
     "description": "Premium Indian event management. Weddings, corporate galas, social functions, luxury gifting.",
     "url": "https://divyotsav.com",
-    "telephone": "+919876543210",
+    "telephone": siteSettings?.phone || "+919876543210",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "108, Sanskriti Heights, Luxury Avenue",
+      "streetAddress": siteSettings?.address || "108, Sanskriti Heights, Luxury Avenue",
       "addressLocality": "Colaba, Mumbai",
       "postalCode": "400005",
       "addressRegion": "Maharashtra",
       "addressCountry": "IN",
     },
-    "openingHours": "Mo-Sa 10:00-19:00",
+    "openingHours": siteSettings?.consultationHours || "Mo-Sa 10:00-19:00",
     "areaServed": "India",
     "priceRange": "₹₹₹",
   };
@@ -94,8 +102,8 @@ export default function RootLayout({
         <div className="flex-grow">
           {children}
         </div>
-        <Footer />
-        <WhatsAppFloat />
+        <Footer siteSettings={siteSettings} />
+        <WhatsAppFloat whatsappNumber={siteSettings?.whatsappNumber} />
       </body>
     </html>
   );
